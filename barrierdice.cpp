@@ -33,7 +33,10 @@ int main()
 
     for(int i = 0;i<THREAD_NUM;i++)
     {   int * a = NULL;
-        if(pthread_join(th[i],(void**)&a));
+     if(pthread_join(th[i],(void**)&a)!=0)
+        { 
+           perror("Error 2");
+        }
         delete a;
     }
     pthread_barrier_destroy(&br);
